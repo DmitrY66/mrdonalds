@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import bannerImg from '../img/banner.png';
 
 export const Banner = styled.div`
-  margin-top: 80px;
+  margin-top: 50px;
   width: 100%;
-  height: 370px;
+  height: 350px;
   background-image: url(${bannerImg});
   background-position: center;
   background-size: cover;

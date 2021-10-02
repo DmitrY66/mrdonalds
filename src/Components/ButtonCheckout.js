@@ -6,6 +6,7 @@ export const ButtonCheckout = styled.button`
   margin: 0 auto;
   width: 250px;
   height: 65px;
+  margin-bottom: 30px;
   font-size: inherit;
   font-family: inherit;
   background-color: #299b01;
@@ -20,13 +21,3 @@ export const ButtonCheckout = styled.button`
     border-color: #299b01;
   }
 `;
-
-
-
-
-
-
-
-
-
-
