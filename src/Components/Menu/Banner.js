@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import styled from 'styled-components';
-import bannerImg from '../img/banner.png';
+import bannerImg from '../../img/banner.png';
 
 export const Banner = styled.div`
   margin-top: 50px;

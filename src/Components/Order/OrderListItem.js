@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
-import trashImg from '../img/trash.svg';
+import trashImg from '../../img/trash.svg';
 
 const OrderItemStyled = styled.li`
   display: flex;
@@ -32,11 +32,12 @@ const TrashButton = styled.button`
   cursor: pointer;
 `;
 
-export const OrderListItem = () => (
+export const OrderListItem = ({ order }) => (
   <OrderItemStyled>
-    <ItemName>JS Burger</ItemName>
+    <ItemName>{order.name}</ItemName>
     <span>2</span>
-    <ItemPrice>750 р</ItemPrice>
+    <ItemPrice>{order.price.toLocaleString(`ru-Ru`,
+    {style: 'currency', currency: 'RUB'})}</ItemPrice>
     <TrashButton />
   </OrderItemStyled>
 );

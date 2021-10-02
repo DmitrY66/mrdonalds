@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonCheckout } from './ButtonCheckout';
+import { ButtonCheckout } from '../Style/ButtonCheckout';
 
 const OverLay = styled.div`
   position: fixed;
@@ -46,15 +46,23 @@ const HeaderContent = styled.div`
   font-family: 'Pacifico', cursive;
 `;
 
-export const ModalItem = ({ openItem, setOpenItem }) => {
+export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
 
-  function closeModal(e) {
+  const closeModal = e => {
     if (e.target.id === 'overlay') {
       setOpenItem(null);
     }
-  }
+  };
 
-  if (!openItem) return null;
+  const order = {
+    ...openItem
+  };
+
+  const addToOrder = () => {
+    setOrders([...orders, order]);
+    setOpenItem(null);
+  };
+
   return (
     <OverLay id="overlay" onClick={closeModal}>
       <Modal>
@@ -70,7 +78,7 @@ export const ModalItem = ({ openItem, setOpenItem }) => {
               {openItem.price}
             </div>
           </HeaderContent>
-          <ButtonCheckout>Добавить</ButtonCheckout>
+          <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
         </Content>
 
       </Modal>
