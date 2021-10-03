@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
+import { formatCurrency } from '../Functions/secondaryFunction';
 
-const List = styled.ul `
+const List = styled.ul`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 `;
 
-const Item = styled.li `
+const Item = styled.li`
   position: relative;
   width: 400px;
   height: 155px;
@@ -49,8 +50,7 @@ export const ListItem = ({ itemList, setOpenItem }) => (
         img={item.img}
         onClick={() => setOpenItem(item)}>
         <p>{item.name}</p>
-        <p>{item.price.toLocaleString('ru-RU',
-        {style: 'currency', currency: 'RUB'})}</p>
+        <p>{formatCurrency(item.price)}</p>
       </Item>
     ))}
   </List>
