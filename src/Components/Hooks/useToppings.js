@@ -1,5 +1,4 @@
 /* eslint-disable no-mixed-operators */
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 
 const getTopping = toppings => toppings.map(item => ({
@@ -9,7 +8,9 @@ const getTopping = toppings => toppings.map(item => ({
 
 export function useToppings(openItem) {
 
-  const readyTopping = openItem.toppings && getTopping(openItem.toppings) || [];
+  const readyTopping = openItem.toppings ? 
+  getTopping(openItem.toppings) : [];
+  
   const [toppings, setToppings] = useState(readyTopping);
 
   const checkToppings = index => {
