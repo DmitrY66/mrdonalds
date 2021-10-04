@@ -13,7 +13,7 @@ const OrderStyled = styled.section`
   top: 80px;
   left: 0;
   background: #fff;
-  min-width: 380px;
+  width: 380px;
   height: calc(100% - 80px);
   box-shadow: 3px 4px 5px #0000003b;
 `;
@@ -45,6 +45,7 @@ const TotalPrice = styled.span`
   text-align: right;
   min-width: 65px;
   min-left: 20px;
+  flex-grow: 1;
 `;
 
 const EmptyList = styled.p`
@@ -57,6 +58,9 @@ export const Order = ({ orders }) => {
 
   const total = orders.reduce((result, order) =>
     totalPriceItems(order) + result, 0);
+
+  const totalCounter = orders.reduce((result, order) =>
+    order.count + result, 0);
 
   return (
     <>
@@ -71,7 +75,7 @@ export const Order = ({ orders }) => {
         </OrderContent>
         <Total>
           <span>Итого</span>
-          <span>5</span>
+          <span>{totalCounter}</span>
           <TotalPrice>
             {formatCurrency(total)}
           </TotalPrice>
