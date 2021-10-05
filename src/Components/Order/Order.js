@@ -54,7 +54,7 @@ const EmptyList = styled.p`
   min-left: 20px;
 `;
 
-export const Order = ({ orders, setOrders }) => {
+export const Order = ({ orders, setOrders, setOpenItem }) => {
 
   const deleteItem = index => {
     const newOrders = orders.filter((item, i) => index !== i);
@@ -77,11 +77,12 @@ export const Order = ({ orders, setOrders }) => {
         <OrderContent>
           {orders.length ?
             <OrderList>
-              {orders.map((order, index) => <OrderListItem 
-              key={index}
-              order={order} 
-              deleteItem={deleteItem}
-              index={index}
+              {orders.map((order, index) => <OrderListItem
+                key={index}
+                order={order}
+                deleteItem={deleteItem}
+                index={index}
+                setOpenItem={setOpenItem}
               />)}
             </OrderList> :
             <EmptyList>Список заказов пуст</EmptyList>}
