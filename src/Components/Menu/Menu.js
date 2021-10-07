@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
+// import React, { useContext } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 // import dbMenu from '../DBMenu';
 import { ListItem } from './ListItem';
 import { Banner } from './Banner';
 // import { useFetch } from '../Hooks/useFetch';
+// import { Context } from '../Functions/context';
 
 const MenuStyled = styled.main`
   background-color: #ccc;
@@ -16,7 +18,9 @@ const SectionMenu = styled.section`
   padding: 30px;
 `;
 
-export const Menu = ({ setOpenItem, dbMenu }) => {
+export const Menu = ({ dbMenu }) => {
+
+  // const { openItem: { setOpenItem } } = useContext(Context);
 
   // const res = useFetch();
   // const dbMenu = res.response;
@@ -30,7 +34,7 @@ export const Menu = ({ setOpenItem, dbMenu }) => {
             <h2>Бургеры</h2>
             <ListItem
               itemList={dbMenu.burger}
-              setOpenItem={setOpenItem}
+              // setOpenItem={setOpenItem}
             />
           </SectionMenu>
 
@@ -38,10 +42,10 @@ export const Menu = ({ setOpenItem, dbMenu }) => {
             <h2>Закуски / Напитки</h2>
             <ListItem
               itemList={dbMenu.other}
-              setOpenItem={setOpenItem}
+              // setOpenItem={setOpenItem}
             />
           </SectionMenu>
-        </> : 
+        </> :
         <div>Loading...</div>
       }
     </MenuStyled>

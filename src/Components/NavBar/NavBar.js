@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import logoImg from '../../img/logo.svg';
 import signImg from '../../img/sign.svg';
+import { Context } from '../Functions/context';
 
 const NavBarStyled = styled.header`
   position: fixed;
@@ -61,23 +62,27 @@ const Figure = styled.figure`
   margin: 0 20px 0 0;
 `;
 
-export const NavBar = ({ authentication, logIn, logOut }) => (
-  <NavBarStyled>
-    <Logo>
-      <ImgLogo src={logoImg} alt="logo" />
-      <H1>Mr Donald's</H1>
-    </Logo>
-    {authentication ?
-      <User>
-        <Figure>
-          <img src={signImg} alt={authentication.displayName} />
-          <figcaption>{authentication.displayName}</figcaption>
-        </Figure>
-        <LogOut title="выйти" onClick={logOut}>&#10006;</LogOut>
-      </User> :
-      <LogIn onClick={logIn}>
-        <img src={signImg} alt="войти" />
-        <p>войти</p>
-      </LogIn>}
-  </NavBarStyled>
-);
+export const NavBar = () => {
+  const { auth: { authentication, logIn, logOut } } = useContext(Context);
+  // const { authentication, logIn, logOut } = auth;
+  return (
+    <NavBarStyled>
+      <Logo>
+        <ImgLogo src={logoImg} alt="logo" />
+        <H1>Mr Donald's</H1>
+      </Logo>
+      {authentication ?
+        <User>
+          <Figure>
+            <img src={signImg} alt={authentication.displayName} />
+            <figcaption>{authentication.displayName}</figcaption>
+          </Figure>
+          <LogOut title="выйти" onClick={logOut}>&#10006;</LogOut>
+        </User> :
+        <LogIn onClick={logIn}>
+          <img src={signImg} alt="войти" />
+          <p>войти</p>
+        </LogIn>}
+    </NavBarStyled>
+  )
+};
